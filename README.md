@@ -8,3 +8,7 @@ This is a POC for Asynchronous Python Lambda Function using the following module
 ### Objective
 
 Push the messages into the sqs queue asynchronously in Python.
+
+### Setup
+
+Install packages with Pipenv using Pipfile.
