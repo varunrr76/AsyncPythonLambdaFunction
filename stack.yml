@@ -2,7 +2,7 @@ Resources:
 
   ProjectRepos:
     Type: AWS::S3::Bucket
-    Poperties:
+    Properties:
       BuckteName: project-repos
       BucketEncryption:
         ServerSideEncryptionConfiguration:
