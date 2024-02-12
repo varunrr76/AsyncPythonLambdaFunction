@@ -23,14 +23,14 @@ jobs:
         run: |
         rm -rf AsyncPythonLambdaFunction.zip
         zip -r AsyncPythonLambdaFunction.zip . -x ".github/*" ".stack.yml"
-      - name: Configure AWS credentials for Uploading to S3
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.REGION}}
-        run: |
-          aws s3 cp "AsyncPythonLambdaFunction.zip" "s3://${{ secrets.PROJECT_REPOS }}/"
+      # - name: Configure AWS credentials for Uploading to S3
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ${{ secrets.REGION}}
+      #   run: |
+      #     aws s3 cp "AsyncPythonLambdaFunction.zip" "s3://${{ secrets.PROJECT_REPOS }}/"
 
   # Deploy:
   #   runs-on: ubuntu-latest
