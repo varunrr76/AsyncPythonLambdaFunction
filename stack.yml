@@ -1,5 +1,5 @@
 Parameters:
-  codeZipFileName:
+  BuildGuid:
     Type: String
 
 Resources:
@@ -62,5 +62,4 @@ Resources:
           REGION: us-east-1
       Code:
         S3Bucket: !ImportValue ProjectReposName
-        S3Key: !Ref codeZipFileName
-
+        S3Key: !Join ['', ['AsyncPythonLambdaFunction', '-', !Ref BuildGuid, '.zip']]
