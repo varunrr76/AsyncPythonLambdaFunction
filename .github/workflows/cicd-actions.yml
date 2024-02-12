@@ -71,7 +71,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION}}
       - name: Delete previously create stack
         run: |
-          aws delete-stack --stack-name AsyncPythonLambdaFunction
+          aws cloudformation delete-stack --stack-name AsyncPythonLambdaFunction
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
