@@ -48,8 +48,7 @@ jobs:
       - name: Create code build guid
         id: step3
         run: |
-          BuildGuid="$(date +%s)"
-          echo $BuildGuid >> "$GITHUB_OUTPUT"
+          echo "BuildGuid=$(date +%s)" >> "$GITHUB_OUTPUT"
       - name: Zip the code
         run: |
           zip -r "AsyncPythonLambdaFunction-$BuildGuid.zip" . -x ".github/*" ".stack.yml"
