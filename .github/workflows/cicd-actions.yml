@@ -51,7 +51,7 @@ jobs:
           echo "BuildGuid=$(date +%s)" >> "$GITHUB_OUTPUT"
       - name: Zip the code
         run: |
-          zip -r "AsyncPythonLambdaFunction-$BuildGuid.zip" . -x ".github/*" ".stack.yml"
+          zip -r "AsyncPythonLambdaFunction-${{ steps.step3.outputs.BuildGuid }}.zip" . -x ".github/*" ".stack.yml"
       - name: Configure AWS credentials for Uploading to S3
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -60,7 +60,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload the zip file to S3
         run: |
-          aws s3 cp "AsyncPythonLambdaFunction-$BuildGuid.zip"  "s3://${{ secrets.PROJECT_REPOS }}/"
+          aws s3 cp "AsyncPythonLambdaFunction-${{ steps.step3.outputs.BuildGuid }}.zip"  "s3://${{ secrets.PROJECT_REPOS }}/"
 
   Deploy:
     runs-on: ubuntu-latest
