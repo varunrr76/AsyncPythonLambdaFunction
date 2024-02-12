@@ -45,12 +45,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt --target='.'
-      - name: Zip the code
+      - name: Create code build guid
         id: step3
         run: |
           BuildGuid="$(date +%s)"
-          zip -r "AsyncPythonLambdaFunction-$BuildGuid.zip" . -x ".github/*" ".stack.yml"
           echo $BuildGuid >> "$GITHUB_OUTPUT"
+      - name: Zip the code
+        run: |
+          zip -r "AsyncPythonLambdaFunction-$BuildGuid.zip" . -x ".github/*" ".stack.yml"
       - name: Configure AWS credentials for Uploading to S3
         uses: aws-actions/configure-aws-credentials@v1
         with:
