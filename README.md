@@ -11,4 +11,4 @@ Push the messages into the sqs queue asynchronously in Python.
 
 ### Setup
 
-Install packages with Pipenv using Pipfile.
+Install packages with requirements.txt file.
