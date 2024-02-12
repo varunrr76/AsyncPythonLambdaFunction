@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'lambda_function.py'
+      - 'stack.yml'
+      - '.github/workflows/cicd-actions.yml'
 
 jobs:
   Build:
