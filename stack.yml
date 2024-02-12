@@ -1,19 +1,5 @@
 Resources:
 
-  ProjectRepos:
-    Type: AWS::S3::Bucket
-    Properties:
-      BucketName: project-repos
-      BucketEncryption:
-        ServerSideEncryptionConfiguration:
-          - ServerSideEncryptionByDefault:
-              SSEAlgorithm: AES256
-      PublicAccessBlockConfiguration:  
-        BlockPublicAcls: true
-        BlockPublicPolicy: true
-        IgnorePublicAcls: true
-        RestrictPublicBuckets: true
-
   DemoSqs:
     Type: AWS::SQS::Queue
     Properties: 
