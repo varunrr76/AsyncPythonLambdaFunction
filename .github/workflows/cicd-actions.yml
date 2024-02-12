@@ -69,10 +69,12 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION}}
+      - name: Delete previously create stack
+        run: |
+          aws delete-stack --stack-name 'AsyncPythonLambdaFunction'
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: AsyncPythonLambdaFunction
           template: stack.yml
           capabilities: CAPABILITY_NAMED_IAM
-          no-fail-on-empty-changeset: 1
