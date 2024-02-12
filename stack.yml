@@ -1,3 +1,7 @@
+Parameters:
+  codeZipFileName:
+    Type: String
+
 Resources:
 
   DemoSqs:
@@ -58,5 +62,5 @@ Resources:
           REGION: us-east-1
       Code:
         S3Bucket: !ImportValue ProjectReposName
-        S3Key: !Join ['', ['AsyncPythonLambdaFunction', '.zip']]
+        S3Key: !Ref codeZipFileName
 
