@@ -6,6 +6,7 @@ from os import env
 queue_url = env.get('DEMO_QUEUE')
 
 def lambda_handler(event, context):
+    
     print("Start Async Python Function")
     asyncio_event_loop = get_event_loop()
     queued_messages = asyncio_event_loop.run_until_complete(execute_lambda(event))
