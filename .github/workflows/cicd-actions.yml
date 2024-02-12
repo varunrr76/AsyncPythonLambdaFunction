@@ -48,8 +48,8 @@ jobs:
       - name: Zip the code
         run: |
           BuildGuid="$(date +%s)"
-          echo $BuildGuid >> "$GITHUB_OUTPUT"
           zip -r "AsyncPythonLambdaFunction-$BuildGuid.zip" . -x ".github/*" ".stack.yml"
+          echo $BuildGuid >> "$GITHUB_OUTPUT"
       - name: Configure AWS credentials for Uploading to S3
         uses: aws-actions/configure-aws-credentials@v1
         with:
