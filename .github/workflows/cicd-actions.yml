@@ -58,7 +58,7 @@ jobs:
       - name: Upload the zip file to S3
         id: step5
         run: |
-          BuildGuid="$(date+%s)"
+          BuildGuid="$(date +%s)"
           echo $BuildGuid >> "$GITHUB_OUTPUT"
           aws s3 cp "AsyncPythonLambdaFunction-${BuildGuid}.zip"  "s3://${{ secrets.PROJECT_REPOS }}/"
 
