@@ -3,7 +3,7 @@ from asyncio import get_event_loop, gather
 from aiobotocore.session import get_session
 from os import env
 
-queue_url = env.get('consumerQueue')
+queue_url = env.get('DEMO_QUEUE')
 
 def lambda_handler(event, context):
     print("Start Async Python Function")
@@ -25,7 +25,7 @@ async def execute_lambda(event):
     
     session = get_session()
 
-    async with session.create_client('sqs', region_name=env.get('region', 'us-east-1')) as sqs_client:
+    async with session.create_client('sqs', region_name=env.get('REGION', 'us-east-1')) as sqs_client:
         queued_messages = await gather(*[sqs_client.send_message(QueueUrl=queue_url, MessageBody=dumps({'messageId': message_id})) for message_id in message_ids])
         
     print(f"len of queued_messages: {queued_messages}")
