@@ -12,3 +12,17 @@ Resources:
         BlockPublicPolicy: true
         IgnorePublicAcls: true
         RestrictPublicBuckets: true
+
+Output:
+
+  ProjectReposName:
+    Description: Name of Project Repos Bucket
+    Value: !Ref ProjectRepos
+    Export:
+      Name: ProjectReposName
+    
+  ProjectReposArn:
+    Description: Arn of Project Repos Bucket
+    Value: !GetAtt ProjectRepos.Arn
+    Export:
+      Name: ProjectReposArn

@@ -30,8 +30,8 @@ Resources:
                   - 's3:ListBucket'
                   - 's3:GetObject'
                 Resource:
-                  - !GetAtt ProjectRepos.Arn
-                  - !Join ['', [!GetAtt ProjectRepos.Arn, '/*']]
+                  - !ImportValue ProjectReposArn
+                  - !Join ['', [!ImportValue ProjectReposArn, '/*']]
         - PolicyName: sqs-send-message-lambda-policy
           PolicyDocument:
             Version: 2012-10-17
@@ -57,6 +57,6 @@ Resources:
           DEMO_QUEUE: !Ref DemoSqs
           REGION: us-east-1
       Code:
-        S3Bucket: !Ref ProjectRepos
+        S3Bucket: !ImportValue ProjectReposName
         S3Key: !Join ['', ['AsyncPythonLambdaFunction', '.zip']]
 
