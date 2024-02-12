@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  CreateS3Bucket:
+  CreateProjectReposS3Bucket:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
       - name: Create S3Bucket AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: AsyncPythonLambdaFunction
+          name: CreateProjectReposS3Bucket
           template: stack-buckets.yml
           capabilities: CAPABILITY_NAMED_IAM
 
