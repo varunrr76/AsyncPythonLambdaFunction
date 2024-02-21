@@ -53,7 +53,7 @@ jobs:
           echo "BuildGuid=$(date +%s)" >> "$GITHUB_OUTPUT"
       - name: Zip the code
         run: |
-          zip -r "$REPO_NAME-${{ steps.step3.outputs.BuildGuid }}.zip" . -x ".github/*" ".stack.yml"
+          zip -r "$REPO_NAME-${{ steps.step3.outputs.BuildGuid }}.zip" . -x ".github/*" "stack.yml"
       - name: Configure AWS credentials for Uploading to S3
         uses: aws-actions/configure-aws-credentials@v1
         with:
