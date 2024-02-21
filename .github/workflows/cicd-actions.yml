@@ -82,4 +82,4 @@ jobs:
           name: ${{ github.event.repository.name }}
           template: stack.yml
           capabilities: CAPABILITY_NAMED_IAM
-          parameter-overrides: "BuildGuid=${{ needs.Build.step3.outputs.BuildGuid }}"
+          parameter-overrides: "BuildGuid=${{ needs.Build.outputs.BuildGuid }}"
