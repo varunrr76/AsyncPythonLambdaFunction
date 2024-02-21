@@ -62,4 +62,4 @@ Resources:
           REGION: us-east-1
       Code:
         S3Bucket: !ImportValue ProjectReposName
-        S3Key: !Join ['', ['AsyncPythonLambdaFunction', '-', !Ref BuildGuid, '.zip']]
+        S3Key: !Join ['', ['AsyncPythonLambdaFunction/', 'AsyncPythonLambdaFunction', '-', !Ref BuildGuid, '.zip']]
