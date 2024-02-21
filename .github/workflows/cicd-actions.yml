@@ -62,7 +62,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload the zip file to S3
         run: |
-          aws s3 cp "$REPO_NAME-${{ steps.step3.outputs.BuildGuid }}.zip"  "s3://$REPO_NAME/${{ secrets.PROJECT_REPOS }}/"
+          aws s3 cp "$REPO_NAME-${{ steps.step3.outputs.BuildGuid }}.zip"  "s3://${{ secrets.PROJECT_REPOS }}/$REPO_NAME/"
 
   Deploy:
     runs-on: ubuntu-latest
