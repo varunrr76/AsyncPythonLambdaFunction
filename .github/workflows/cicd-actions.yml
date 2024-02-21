@@ -62,7 +62,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload the zip file to S3
         run: |
-          aws s3 cp "$REPO_NAME-${{ steps.step3.outputs.BuildGuid }}.zip"  "s3://${{ secrets.PROJECT_REPOS }}/"
+          aws s3 cp "$REPO_NAME-${{ steps.step3.outputs.BuildGuid }}.zip"  "s3://$REPO_NAME/${{ secrets.PROJECT_REPOS }}/"
 
   Deploy:
     runs-on: ubuntu-latest
@@ -79,7 +79,7 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: $REPO_NAME
+          name: ${{ github.event.repository.name }}
           template: stack.yml
           capabilities: CAPABILITY_NAMED_IAM
           parameter-overrides: "BuildGuid=${{ needs.Build.step4.outputs.BuildGuid }}"
